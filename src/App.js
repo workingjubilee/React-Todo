@@ -6,7 +6,7 @@ import TodoForm from "./components/TodoComponents/TodoForm";
 //  Your todo list should display a list of todos,
 //  (0[1]) an input field
 //  (0[2]) a submit button
-//  (0[1]) and a clear all button.
+//  (0[3]) and a clear all button.
 //  (1) use the given files for building out these components.
 //  (2) <App /> will hold the data needed for this project.
 //  (3) <App /> is the container for your Todo Components.
@@ -20,14 +20,23 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: "Go on..."
+      message: "Go on...",
+      loading: "",
+      saved: "Nothing saved."
     };
   }
 
   handleSingleClickEvent = event => {
     console.log(event.target.value);
     this.setState({
-      message: "Yay!"
+      message: "Yay!",
+      saved: this.state.loading
+    });
+  };
+
+  handleInputChange = event => {
+    this.setState({
+      loading: event.target.value
     });
   };
 
@@ -35,10 +44,21 @@ class App extends React.Component {
     return (
       <div>
         <h1>{this.state.message}</h1>
+
+        <TodoForm
+          text={this.state.saved}
+          handleChanges={this.handleInputChange}
+        />
         <button onClick={this.handleSingleClickEvent}>Click Me</button>
       </div>
     );
   }
 }
+
+// <input
+//   type="text"
+//   placeholder="Doing something?"
+//   onChange={this.handleInputChange}
+// />;
 
 export default App;

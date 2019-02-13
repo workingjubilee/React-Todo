@@ -5,5 +5,14 @@
 import React from "react";
 
 const Todo = props => {};
+// props.task;
+// props.id;
+// props.completed: false;
+
+//   {
+// task: 'Organize Garage',
+//   id: 1528817077286,
+//     completed: false
+//   },
 
 export default Todo;
