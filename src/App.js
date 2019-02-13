@@ -19,6 +19,11 @@ class App extends React.Component {
   // including any handlers you need to work with your state
   constructor() {
     super();
+    this.todoSaved = [];
+    // there's might be a .push to this at some point, probably?
+    // to get it saved into local browser data instead of React's State?
+    // I could put it temporarily in State, but...?
+    // wait, would "on an object" be saved? hmm...
     this.state = {
       message: "Go on...",
       loading: "",
@@ -26,7 +31,7 @@ class App extends React.Component {
     };
   }
 
-  handleSingleClickEvent = event => {
+  handleAdd = event => {
     console.log(event.target.value);
     this.setState({
       message: "Yay!",
@@ -40,6 +45,10 @@ class App extends React.Component {
     });
   };
 
+  handleClear = event => {
+    this.setState({});
+  };
+
   render() {
     return (
       <div>
@@ -48,8 +57,9 @@ class App extends React.Component {
         <TodoForm
           text={this.state.saved}
           handleChanges={this.handleInputChange}
+          formAdd={this.handleAdd}
+          formClear={this.handleClear}
         />
-        <button onClick={this.handleSingleClickEvent}>Click Me</button>
       </div>
     );
   }

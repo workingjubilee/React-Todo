@@ -16,10 +16,14 @@ const TodoForm = props => {
         placeholder="Doing something?"
         onChange={props.handleChanges}
       />
+      <button onClick={props.formAdd}>Add Todo</button>
+      <button onClick={props.formClear}>Clear Completed</button>
     </div>
   );
 };
 // onChange = { this.handleInputChange }
+// probably use an actual form so that the enter thing works automatically?
+// use onSubmit
 
 export default TodoForm;
 

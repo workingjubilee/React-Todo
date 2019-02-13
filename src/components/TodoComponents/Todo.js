@@ -4,7 +4,15 @@
 
 import React from "react";
 
-const Todo = props => {};
+const Todo = props => {
+  return (
+    <div>
+      {props.task}
+      {props.id}
+      {prop.completed}
+    </div>
+  );
+};
 // props.task;
 // props.id;
 // props.completed: false;
