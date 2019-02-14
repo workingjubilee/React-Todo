@@ -11,21 +11,23 @@ const TodoForm = props => {
   return (
     <div>
       <h3>{props.text}</h3>
-      <form onSubmit={props.formAdd}>
-        <label>
-          Name:
-          <input
-            type="text"
-            placeholder="Doing something?"
-            onChange={props.handleChanges}
-          />
-        </label>
-        <button>Add Todo</button>
-      </form>
+      ToDo?:
+      <input
+        type="text"
+        placeholder="Doing something?"
+        onChange={props.handleChanges}
+      />
+      <button onClick={props.formAdd}>Add Todo</button>
       <button onClick={props.formClear}>Clear Completed</button>
     </div>
   );
 };
+
+// define function in parent component
+// pass it down to the child component as a callback
+// pass that data into that function.
+// easy...r - right ??
+
 // onChange = { this.handleInputChange }
 // probably use an actual form so that the enter thing works automatically?
 // use onSubmit

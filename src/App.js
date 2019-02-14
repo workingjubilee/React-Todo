@@ -39,16 +39,16 @@ class App extends React.Component {
     };
   }
 
-  handleAdd = event => {
+  handleAdd = (event, text) => {
     event.preventDefault();
-    this.state.buffer.task = this.state.text;
-    this.state.buffer.id = Date.now;
-    this.state.bufferArray = this.state.stateArray.slice();
-    this.state.bufferArray.push(buffer);
-    console.log(event);
+    console.log("Yo!");
+    const newTodo = {
+      task: text,
+      id: Date.now(),
+      completed: false
+    };
     this.setState({
-      stateArray: bufferArray,
-      buffer: { text: "", id: "", completed: false }
+      stateArray: [...this.state.stateArray, newTodo]
     });
   };
 
@@ -79,6 +79,18 @@ class App extends React.Component {
     );
   }
 }
+
+// define function in parent component
+// pass it down to the child component as a callback
+// pass that data into that function.
+// easy...r - right ??
+// this.setState(() => { })
+// groceries: [...this.state.groceries, newItem]
+// const newItem = {
+// item: item,
+//   id: Date.now(),
+//     purchased: false
+// 	}
 
 // <input
 //   type="text"

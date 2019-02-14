@@ -18,6 +18,7 @@ const TodoList = props => {
       {props.listArray.map(props => {
         return (
           <Todo
+            key={props.id}
             task={props.task}
             id={props.id}
             completed={props.completed.toString()}
