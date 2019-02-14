@@ -26,10 +26,7 @@ class App extends React.Component {
     // wait, would "on an object" be saved? why wouldn't State be saved??? hmm...
     this.state = {
       message: "Go on...",
-      loading: "",
       text: "",
-      buffer: { task: "", id: "", completed: false },
-      bufferArray: [],
       stateArray: [
         { task: "fake", id: 1, completed: false },
         { task: "faker", id: 2, completed: true },
@@ -58,8 +55,16 @@ class App extends React.Component {
     });
   };
 
-  handleClear = event => {
-    this.setState({});
+  handleClear = (event, todo) => {
+    console.log("Yo!");
+    this.setState({
+      stateArray: this.state.stateArray.filter(todo => {
+        if (todo.completed === false) {
+          console.log("Yoer!");
+          return todo;
+        }
+      })
+    });
   };
 
   render() {
@@ -74,7 +79,6 @@ class App extends React.Component {
           formAdd={this.handleAdd}
           formClear={this.handleClear}
         />
-        <h1>{this.state.boolean}</h1>
       </div>
     );
   }
