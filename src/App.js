@@ -27,16 +27,17 @@ class App extends React.Component {
     this.state = {
       message: "Go on...",
       loading: "",
-      saved: "Nothing saved."
+      saved: "Nothing saved.",
+      tempSave: []
     };
   }
 
   handleAdd = event => {
-    console.log(event.target.value);
     this.setState({
       message: "Yay!",
       saved: this.state.loading
     });
+    event.preventDefault();
   };
 
   handleInputChange = event => {
@@ -53,6 +54,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>{this.state.message}</h1>
+        <TodoList todoArray={this.state.tempSave} />
 
         <TodoForm
           text={this.state.saved}

@@ -9,8 +9,14 @@
 
 import React from "react";
 
-// .map( => Todo),
+// todoArray.map(props => {return ,
 
-const TodoList = props => {};
+const TodoList = props => {
+  return props.todoArray.map(props => {
+    {
+      <Todo task={props.task} id={props.id} completed={props.completed} />;
+    }
+  });
+};
 
 export default TodoList;

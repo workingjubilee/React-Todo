@@ -11,12 +11,17 @@ const TodoForm = props => {
   return (
     <div>
       <h3>{props.text}</h3>
-      <input
-        type="text"
-        placeholder="Doing something?"
-        onChange={props.handleChanges}
-      />
-      <button onClick={props.formAdd}>Add Todo</button>
+      <form onSubmit={props.formAdd}>
+        <label>
+          Name:
+          <input
+            type="text"
+            placeholder="Doing something?"
+            onChange={props.handleChanges}
+          />
+        </label>
+        <input type="submit" value="Add Todo" />
+      </form>
       <button onClick={props.formClear}>Clear Completed</button>
     </div>
   );
@@ -24,6 +29,7 @@ const TodoForm = props => {
 // onChange = { this.handleInputChange }
 // probably use an actual form so that the enter thing works automatically?
 // use onSubmit
+// <input type="submit" onSubmit={props.formAdd} value="Add Todo" />?
 
 export default TodoForm;
 
