@@ -8,15 +8,33 @@
 // (3[0]) athe Todo List should re-render with the added todo.
 
 import React from "react";
+import Todo from "./Todo";
 
 // todoArray.map(props => {return ,
 
 const TodoList = props => {
-  return props.todoArray.map(props => {
-    {
-      <Todo task={props.task} id={props.id} completed={props.completed} />;
-    }
-  });
+  return (
+    <div className="todoList">
+      {props.listArray.map(props => {
+        return (
+          <Todo
+            task={props.task}
+            id={props.id}
+            completed={props.completed.toString()}
+          />
+        );
+      })}
+    </div>
+  );
 };
+
+// props.listArray.map(props => {
+//   {
+//     <Todo task={props.task} id={props.id} completed={props.completed} />;
+//   }
+// props has
+// props.todoArray
+// todoArray has [0] [1] etc.
+// props.toDoArray[0] is an object
 
 export default TodoList;

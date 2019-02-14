@@ -7,9 +7,10 @@ import React from "react";
 const Todo = props => {
   return (
     <div>
-      {props.task}
-      {props.id}
-      {prop.completed}
+      <h1>Todo Item</h1>
+      <p>{props.task}</p>
+      <p>{props.id}</p>
+      <p>{props.completed}</p>
     </div>
   );
 };

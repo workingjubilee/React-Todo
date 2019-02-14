@@ -23,26 +23,38 @@ class App extends React.Component {
     // there's might be a .push to this at some point, probably?
     // to get it saved into local browser data instead of React's State?
     // I could put it temporarily in State, but...?
-    // wait, would "on an object" be saved? hmm...
+    // wait, would "on an object" be saved? why wouldn't State be saved??? hmm...
     this.state = {
       message: "Go on...",
       loading: "",
-      saved: "Nothing saved.",
-      tempSave: []
+      text: "",
+      buffer: { task: "", id: "", completed: false },
+      bufferArray: [],
+      stateArray: [
+        { task: "fake", id: 1, completed: false },
+        { task: "faker", id: 2, completed: true },
+        { task: "fakest", id: 3, completed: false }
+      ],
+      boolean: true
     };
   }
 
   handleAdd = event => {
-    this.setState({
-      message: "Yay!",
-      saved: this.state.loading
-    });
     event.preventDefault();
+    this.state.buffer.task = this.state.text;
+    this.state.buffer.id = Date.now;
+    this.state.bufferArray = this.state.stateArray.slice();
+    this.state.bufferArray.push(buffer);
+    console.log(event);
+    this.setState({
+      stateArray: bufferArray,
+      buffer: { text: "", id: "", completed: false }
+    });
   };
 
   handleInputChange = event => {
     this.setState({
-      loading: event.target.value
+      text: event.target.value
     });
   };
 
@@ -54,14 +66,15 @@ class App extends React.Component {
     return (
       <div>
         <h1>{this.state.message}</h1>
-        <TodoList todoArray={this.state.tempSave} />
+        <TodoList listArray={this.state.stateArray} />
 
         <TodoForm
-          text={this.state.saved}
+          text={this.state.text}
           handleChanges={this.handleInputChange}
           formAdd={this.handleAdd}
           formClear={this.handleClear}
         />
+        <h1>{this.state.boolean}</h1>
       </div>
     );
   }
