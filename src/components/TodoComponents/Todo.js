@@ -3,14 +3,14 @@
 // 2) and displays the task to the screen.
 
 import React from "react";
+import "./Todo.css";
 
 const Todo = props => {
   return (
     <div>
-      <h1>Todo Item</h1>
-      <p>{props.task}</p>
+      <h1 className={props.completed.toString()}>{props.task}</h1>
       <p>{props.id}</p>
-      <p>{props.completed}</p>
+      <button onClick={() => props.todoCheck(props.id)}>Done?</button>
     </div>
   );
 };

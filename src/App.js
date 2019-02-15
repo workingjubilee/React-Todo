@@ -56,22 +56,40 @@ class App extends React.Component {
   };
 
   handleClear = (event, todo) => {
-    console.log("Yo!");
     this.setState({
       stateArray: this.state.stateArray.filter(todo => {
         if (todo.completed === false) {
-          console.log("Yoer!");
           return todo;
         }
       })
     });
   };
 
+  todoCheck = check => {
+    console.log("Check");
+    this.setState({
+      stateArray: this.state.stateArray.map(todo => {
+        if (todo.id === check) {
+          return { ...todo, completed: !todo.completed };
+          console.log("Bang");
+        } else {
+          return todo;
+          console.log("Skipped");
+        }
+      })
+    });
+  };
+
+  // onClick={() => props.toggle(props.id)} props.task.task?
+
   render() {
     return (
-      <div>
+      <main>
         <h1>{this.state.message}</h1>
-        <TodoList listArray={this.state.stateArray} />
+        <TodoList
+          listArray={this.state.stateArray}
+          todoCheck={this.todoCheck}
+        />
 
         <TodoForm
           text={this.state.text}
@@ -79,7 +97,7 @@ class App extends React.Component {
           formAdd={this.handleAdd}
           formClear={this.handleClear}
         />
-      </div>
+      </main>
     );
   }
 }

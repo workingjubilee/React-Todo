@@ -15,13 +15,15 @@ import Todo from "./Todo";
 const TodoList = props => {
   return (
     <div className="todoList">
-      {props.listArray.map(props => {
+      <button onClick={props.todoCheck}>Test</button>
+      {props.listArray.map(todo => {
         return (
           <Todo
-            key={props.id}
-            task={props.task}
-            id={props.id}
-            completed={props.completed.toString()}
+            key={todo.id}
+            task={todo.task}
+            id={todo.id}
+            completed={todo.completed}
+            todoCheck={props.todoCheck}
           />
         );
       })}
