@@ -1,2 +1,6 @@
 /* - ** Don't focus on styling yet**.
 We want you to worry about function over form today. */
+
+.true {
+  text-decoration: line-through solid red;
+}
